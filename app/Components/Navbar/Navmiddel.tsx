@@ -74,12 +74,6 @@ export default function Navmiddel() {
     );
   };
 
-  // Demande l'ouverture du panier global puis ferme le menu mobile.
-  const handleCartOpen = () => {
-    window.dispatchEvent(new Event("cart-open"));
-    setOpenMenu(false);
-  };
-
   // Soumet les identifiants saisis vers un event custom d'authentification.
   const handleAccountSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -125,10 +119,10 @@ export default function Navmiddel() {
         </Link>
 
         {/* Actions rapides en mobile (wishlist et panier). */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden relative">
           <Link
             href="/UI-Components/Pages/Wishlist"
-            className="relative flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-gray-light"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-gray-light cursor-pointer"
             aria-label="Favoris"
           >
             <Icon icon="tabler:heart" width="22" height="22" />
@@ -139,9 +133,9 @@ export default function Navmiddel() {
             )}
           </Link>
 
-          <button
-            type="button"
-            onClick={handleCartOpen}
+          <Link
+            href="/UI-Components/Pages/Cart"
+            onClick={() => setOpenMenu(false)}
             className="relative flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-gray-light"
             aria-label="Panier"
           >
@@ -151,7 +145,7 @@ export default function Navmiddel() {
                 {cartCount}
               </span>
             )}
-          </button>
+          </Link>
         </div>
 
         {/* Recherche visible uniquement en desktop/tablette large. */}
@@ -178,7 +172,7 @@ export default function Navmiddel() {
         </form>
 
         {/* Actions desktop: compte, wishlist et panier avec badges. */}
-        <ul className="hidden items-center justify-end space-x-3 lg:flex lg:space-x-5">
+        <ul className="hidden items-center justify-end space-x-3 lg:flex lg:space-x-5 relative">
           <li>
             <button
               type="button"
@@ -190,7 +184,7 @@ export default function Navmiddel() {
             </button>
           </li>
 
-          <li>
+          <li className="relative">
             <Link
               href="/UI-Components/Pages/Wishlist"
               className="relative flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-300 bg-gray-light"
@@ -206,9 +200,8 @@ export default function Navmiddel() {
           </li>
 
           <li>
-            <button
-              type="button"
-              onClick={handleCartOpen}
+            <Link
+              href="/UI-Components/Pages/Cart"
               className="relative flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border border-gray-300 bg-gray-light"
               aria-label="Panier"
             >
@@ -218,7 +211,7 @@ export default function Navmiddel() {
                   {cartCount}
                 </span>
               )}
-            </button>
+            </Link>
           </li>
         </ul>
       </div>

@@ -65,10 +65,10 @@ export default function Hero() {
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
                 <div
-                  className="h-full rounded-md bg-cover bg-center items-center justify-center flex"
+                  className="flex h-full items-start justify-center rounded-md bg-cover bg-center"
                   style={{ backgroundImage: `url(${slide.img})` }}
                 >
-                  <div className="text-center pt-20">
+                  <div className="content z-1 h-full pt-20 text-center">
                     <span className="underline text-sm xl:text-xl uppercase font-bold block mb-2">
                       {slide.title}
                     </span>

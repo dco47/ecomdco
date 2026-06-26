@@ -1,5 +1,6 @@
 import Category from "./Category/page";
 import Hero from "./Hero/page";
+import TopSelling from "./TopSelling/page";
 
 
 export default function Index() {
@@ -7,6 +8,7 @@ export default function Index() {
     <>
       <Hero />
       <Category />
+      <TopSelling />
     </>
   )
 }

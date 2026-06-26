@@ -1,0 +1,146 @@
+{
+  "products": [
+    {
+      "Id": "1",
+      "title": "Fraise",
+      "image1": "/mainproduct-01-1.webp",
+      "image2": "/mainproduct-01-2.webp",
+      "price": "2 500",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Top"
+    },
+    {
+      "Id": "2",
+      "title": "Pastèque",
+      "image1": "/mainproduct-02-1.webp",
+      "image2": "/mainproduct-02-2.webp",
+      "price": "1 900",
+      "rating": "4.0",
+      "sizes": ["1 L", "500 ml", "250 ml"],
+      "label": "Nouveau"
+    },
+    {
+      "Id": "3",
+      "title": "Brocoli",
+      "image1": "/mainproduct-03-1.webp",
+      "image2": "/mainproduct-03-2.webp",
+      "price": "2 100",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Promo"
+    },
+    {
+      "Id": "4",
+      "title": "Citron",
+      "image1": "/mainproduct-04-1.webp",
+      "image2": "/mainproduct-04-2.webp",
+      "price": "3 200",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Top"
+    },
+    {
+      "Id": "5",
+      "title": "Pomme",
+      "image1": "/mainproduct-05-1.webp",
+      "image2": "/mainproduct-05-2.webp",
+      "price": "1 500",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Meilleur"
+    },
+    {
+      "Id": "6",
+      "title": "Avocat",
+      "image1": "/mainproduct-06-1.webp",
+      "image2": "/mainproduct-06-2.webp",
+      "price": "5 500",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Top"
+    },
+    {
+      "Id": "7",
+      "title": "Carottes",
+      "image1": "/mainproduct-07-1.webp",
+      "image2": "/mainproduct-07-2.webp",
+      "price": "1 200",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Nouveau"
+    }
+  ],
+  "mainProducts": [
+    {
+      "Id": "m8",
+      "title": "Banane douce",
+      "image1": "/mainproduct-08-1.webp",
+      "image2": "/mainproduct-08-2.webp",
+      "price": "2 700",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Top"
+    },
+    {
+      "Id": "m9",
+      "title": "Choux violet",
+      "image1": "/mainproduct-09-1.webp",
+      "image2": "/mainproduct-09-2.webp",
+      "price": "2 300",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Nouveau"
+    },
+    {
+      "Id": "m10",
+      "title": "Concombre",
+      "image1": "/mainproduct-10-1.webp",
+      "image2": "/mainproduct-10-2.webp",
+      "price": "3 100",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Promo"
+    },
+    {
+      "Id": "m11",
+      "title": "Orange",
+      "image1": "/mainproduct-11-1.webp",
+      "image2": "/mainproduct-11-2.webp",
+      "price": "2 000",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Top"
+    },
+    {
+      "Id": "m12",
+      "title": "Pomme red",
+      "image1": "/mainproduct-12-1.webp",
+      "image2": "/mainproduct-12-2.webp",
+      "price": "3 800",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Meilleur"
+    },
+    {
+      "Id": "m13",
+      "title": "Oeufs frais",
+      "image1": "/mainproduct-13-1.webp",
+      "image2": "/mainproduct-13-2.webp",
+      "price": "2 600",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Top"
+    },
+    {
+      "Id": "m14",
+      "title": "Pain de mie",
+      "image1": "/mainproduct-14-1.webp",
+      "image2": "/mainproduct-14-2.webp",
+      "price": "2 900",
+      "rating": "4.0",
+      "sizes": ["1 kg", "500 g", "250 g"],
+      "label": "Nouveau"
+    }
+  ]
+}
