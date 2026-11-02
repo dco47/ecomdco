@@ -18,16 +18,10 @@ export default function Navtop() {
 
       <ul className="flex shrink-0 gap-3">
         <li>
-          <link href="/UI-Components/Pages/Contact" />
-          Contact
+          <Link href="/UI-Components/Pages/Contact">Contact</Link>
         </li>
         <li>
-          <link href="/UI-Components/Pages/Blogs" />
-          Blog
-        </li>
-        <li>
-          <link href="/UI-Components/Pages/Contact" />
-          suivi de commandes
+          <Link href="/UI-Components/Pages/Contact">Suivi de commandes</Link>
         </li>
       </ul>
     </>
@@ -49,16 +43,12 @@ export default function Navtop() {
         </ul>
         <ul className="flex gap-3">
           <li>
-            <link href="/UI-Components/Pages/Contact" />
-            Contact
+            <Link href="/UI-Components/Pages/Contact">Contact</Link>
           </li>
           <li>
-            <link href="/UI-Components/Pages/Blogs" />
-            Blog
-          </li>
-          <li>
-            <link href="/UI-Components/Pages/Contact" />
-            suivi de commandes
+            <Link href="/UI-Components/Pages/Contact">
+              Suivi de commandes
+            </Link>
           </li>
         </ul>
       </div>

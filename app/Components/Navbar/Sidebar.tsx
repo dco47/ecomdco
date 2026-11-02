@@ -54,15 +54,6 @@ export default function Sidebar({ open, onClose }: SidebarProps) {
           </li>
           <li>
             <Link
-              href="/UI-Components/Pages/Blogs"
-              onClick={onClose}
-              className={linkBaseClass}
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
               href="/UI-Components/Pages/Contact"
               onClick={onClose}
               className={linkBaseClass}

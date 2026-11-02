@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, type FormEvent } from "react";
 import { Icon } from "@iconify/react";
 import Sidebar from "./Sidebar";
 
 export default function Navmiddel() {
+  const router = useRouter();
   // Etats UI principaux de la barre de navigation.
   const [openMenu, setOpenMenu] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -64,13 +66,20 @@ export default function Navmiddel() {
     setIsSignupMode(false);
   };
 
-  // Intercepte la soumission recherche et diffuse la valeur via un event custom.
+  // Envoie la recherche vers la boutique et la partage avec son filtre local.
   const handleSearchSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const query = searchTerm.trim();
+
     window.dispatchEvent(
       new CustomEvent("navbar-search", {
-        detail: searchTerm.trim(),
+        detail: query,
       })
+    );
+    router.push(
+      query
+        ? `/UI-Components/Pages/Shop?search=${encodeURIComponent(query)}`
+        : "/UI-Components/Pages/Shop",
     );
   };
 
@@ -115,7 +124,7 @@ export default function Navmiddel() {
           <Icon icon="material-symbols-light:menu" width="30" height="30" />
         </button>
         <Link href="/" className="logo font-unbounded text-xl sm:text-2xl cursor-pointer">
-          Ecom<span className="text-prim">Dco</span>
+          Dco<span className="text-prim">Shop</span>
         </Link>
 
         {/* Actions rapides en mobile (wishlist et panier). */}

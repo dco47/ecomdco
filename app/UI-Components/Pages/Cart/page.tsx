@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { Icon } from "@iconify/react";
 
 type CartItem = {
 	id: string;
@@ -46,7 +48,6 @@ export default function CartPage() {
 	return (
 		<main className="bg-white">
 			<section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
-				<p className="font-sen text-sm font-semibold uppercase tracking-[0.28em] text-prim">Cart</p>
 				<h1 className="font-unbounded mt-3 text-3xl font-semibold text-black sm:text-5xl">Votre panier</h1>
 
 				{cartItems.length === 0 ? (
@@ -77,9 +78,11 @@ export default function CartPage() {
 								<button
 									type="button"
 									onClick={() => removeCartItem(index)}
-									className="rounded-md border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 transition-colors duration-300 hover:bg-red-600 hover:text-white"
+									aria-label={`Supprimer ${item.title} du panier`}
+									title="Supprimer du panier"
+									className="rounded-md text-red-600 transition-colors duration-300 hover:bg-red-50 hover:text-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
 								>
-									Supprimer
+									<Icon icon="tabler:trash" width="20" height="20" aria-hidden="true" />
 								</button>
 							</article>
 						))}
@@ -87,6 +90,19 @@ export default function CartPage() {
 						<div className="mt-6 flex items-center justify-between rounded-xl bg-gray-100 p-4">
 							<span className="text-base font-semibold text-black">Total</span>
 							<span className="text-lg font-bold text-black">{formatFcfa(totalAmount)} FCFA</span>
+						</div>
+
+						<div className="mt-5 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+							<p className="text-sm text-gray-600">
+								Finalisez votre commande et accédez à la simulation de paiement.
+							</p>
+							<Link
+								href="/UI-Components/Pages/Checkout"
+								className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-prim px-5 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-prim-dark sm:w-auto"
+							>
+								Continuer vers le paiement
+								<Icon icon="solar:arrow-right-linear" width="18" height="18" aria-hidden="true" />
+							</Link>
 						</div>
 					</div>
 				)}

@@ -142,14 +142,6 @@ export default function Navbottom() {
               Boutique
             </Link>
           </li>
-          <li>
-            <Link
-              href="/UI-Components/Pages/Blogs"
-              className="block px-4 py-4 text-sm font-semibold text-white transition-colors duration-300 hover:bg-black/10"
-            >
-              Blogs
-            </Link>
-          </li>
 
           {/* Menu Pages avec dropdown */}
           <li className="relative">
