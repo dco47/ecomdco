@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import productsData from "@/app/JsonData/TopSelling.json";
+import additionalProductsData from "@/app/JsonData/AdditionalProducts.json";
 
 type Product = {
   Id: string;
@@ -15,6 +16,7 @@ type Product = {
   rating: string;
   sizes: string[];
   label?: string;
+  category?: string;
 };
 
 type CatalogProduct = Product & {
@@ -47,9 +49,9 @@ const categoryByProductId: Record<string, string> = {
   m14: "Épicerie",
 };
 
-const categories = ["Tous les produits", "Fruits", "Légumes", "Épicerie"];
 const products = productsData.products as Product[];
 const mainProducts = productsData.mainProducts as Product[];
+const additionalProducts = additionalProductsData.products as Product[];
 const catalog: CatalogProduct[] = [...products, ...mainProducts].map(
   (product) => {
     const imageNumber = product.Id.replace(/^m/, "").padStart(2, "0");
@@ -61,7 +63,16 @@ const catalog: CatalogProduct[] = [...products, ...mainProducts].map(
       category: categoryByProductId[product.Id] ?? "Autres",
     };
   },
+).concat(
+  additionalProducts.map((product) => ({
+    ...product,
+    category: product.category ?? "Autres",
+  })),
 );
+const categories = [
+  "Tous les produits",
+  ...new Set(catalog.map((product) => product.category)),
+];
 
 const parsePrice = (price: string) => Number(price.replace(/\s/g, ""));
 const normalizeSearch = (value: string) =>
@@ -98,7 +109,12 @@ export default function ShopPage() {
 
   useEffect(() => {
     const syncSearchFromUrl = () => {
-      setSearch(new URLSearchParams(window.location.search).get("search") ?? "");
+      const params = new URLSearchParams(window.location.search);
+      setSearch(params.get("search") ?? "");
+      const category = params.get("category");
+      setSelectedCategory(
+        category && categories.includes(category) ? category : categories[0],
+      );
     };
     const handleNavbarSearch = (event: Event) => {
       const customEvent = event as CustomEvent<string>;

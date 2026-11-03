@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import productsData from "@/app/JsonData/TopSelling.json";
+import additionalProductsData from "@/app/JsonData/AdditionalProducts.json";
 
 type ProductType = {
   Id: string;
@@ -22,7 +23,9 @@ type ProductsPayload = {
 };
 
 const { products, mainProducts } = productsData as ProductsPayload;
-const allProducts = [...products, ...mainProducts];
+const additionalProducts =
+  additionalProductsData.products as ProductType[];
+const allProducts = [...products, ...mainProducts, ...additionalProducts];
 
 export default function Wishlist() {
   const [wishlistProducts, setWishlistProducts] = useState<ProductType[]>([]);

@@ -1,0 +1,184 @@
+{
+  "products": [
+    {
+      "Id": "m15",
+      "title": "Noix de Grenoble",
+      "image1": "/mainproduct-15-1.webp",
+      "image2": "/mainproduct-15-2.webp",
+      "price": "2 500",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Fruits secs"
+    },
+    {
+      "Id": "m16",
+      "title": "Popcorn au beurre",
+      "image1": "/mainproduct-16-1.webp",
+      "image2": "/mainproduct-16-2.webp",
+      "price": "1 000",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Snacks salés"
+    },
+    {
+      "Id": "m17",
+      "title": "Chips de maïs tomate séchée",
+      "image1": "/mainproduct-17-1.webp",
+      "image2": "/mainproduct-17-2.webp",
+      "price": "1 200",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Snacks salés"
+    },
+    {
+      "Id": "m18",
+      "title": "Chips de maïs sel et truffe",
+      "image1": "/mainproduct-18-1.webp",
+      "image2": "/mainproduct-18-2.webp",
+      "price": "1 500",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Snacks salés"
+    },
+    {
+      "Id": "m19",
+      "title": "Chips de pomme de terre crème et oignon",
+      "image1": "/mainproduct-19-1.webp",
+      "image2": "/mainproduct-19-2.webp",
+      "price": "1 000",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Snacks salés"
+    },
+    {
+      "Id": "m20",
+      "title": "Petits pains au sésame",
+      "image1": "/mainproduct-04-4.webp",
+      "image2": "/mainproduct-04-5.webp",
+      "price": "1 500",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Boulangerie"
+    },
+    {
+      "Id": "m21",
+      "title": "Lentilles jaunes",
+      "image1": "/mainproduct-05-3.webp",
+      "image2": "/mainproduct-05-6.webp",
+      "price": "1 800",
+      "rating": "4.0",
+      "sizes": ["500 g", "1 kg"],
+      "category": "Légumineuses"
+    },
+    {
+      "Id": "m22",
+      "title": "Chips Lay's tomate",
+      "image1": "/mainproduct-06-3.webp",
+      "image2": "/mainproduct-06-5.webp",
+      "price": "1 000",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Snacks salés"
+    },
+    {
+      "Id": "m23",
+      "title": "Snack de maïs saveur fromage",
+      "image1": "/mainproduct-07-3.webp",
+      "image2": "/mainproduct-07-6.webp",
+      "price": "1 000",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Snacks salés"
+    },
+    {
+      "Id": "m24",
+      "title": "Makhana (graines de lotus soufflées)",
+      "image1": "/mainproduct-08-3.webp",
+      "image2": "/mainproduct-08-4.webp",
+      "price": "2 000",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Snacks salés"
+    },
+    {
+      "Id": "m25",
+      "title": "Chips Lay's Stax cheddar",
+      "image1": "/mainproduct-09-3.webp",
+      "image2": "/mainproduct-09-5.webp",
+      "price": "1 500",
+      "rating": "4.0",
+      "sizes": ["1 boîte"],
+      "category": "Snacks salés"
+    },
+    {
+      "Id": "m26",
+      "title": "Amandes",
+      "image1": "/mainproduct-10-4.webp",
+      "image2": "/mainproduct-10-6.webp",
+      "price": "2 500",
+      "rating": "4.0",
+      "sizes": ["250 g", "500 g"],
+      "category": "Fruits secs"
+    },
+    {
+      "Id": "m27",
+      "title": "Graines de courge",
+      "image1": "/mainproduct-11-4.webp",
+      "image2": "/mainproduct-11-5.webp",
+      "price": "2 000",
+      "rating": "4.0",
+      "sizes": ["250 g", "500 g"],
+      "category": "Fruits secs"
+    },
+    {
+      "Id": "m28",
+      "title": "Figues séchées",
+      "image1": "/mainproduct-12-3.webp",
+      "image2": "/mainproduct-12-5.webp",
+      "price": "2 500",
+      "rating": "4.0",
+      "sizes": ["250 g", "500 g"],
+      "category": "Fruits secs"
+    },
+    {
+      "Id": "m29",
+      "title": "Mélange de fruits secs et de noix",
+      "image1": "/mainproduct-13-5.webp",
+      "image2": "/mainproduct-13-6.webp",
+      "price": "3 000",
+      "rating": "4.0",
+      "sizes": ["250 g", "500 g"],
+      "category": "Fruits secs"
+    },
+    {
+      "Id": "m30",
+      "title": "Noix décortiquées",
+      "image1": "/mainproduct-14-3.webp",
+      "image2": "/mainproduct-14-6.webp",
+      "price": "2 500",
+      "rating": "4.0",
+      "sizes": ["250 g", "500 g"],
+      "category": "Fruits secs"
+    },
+    {
+      "Id": "m31",
+      "title": "Fromage en portions",
+      "image1": "/product-02-3.webp",
+      "image2": "/product-02-5.webp",
+      "price": "1 500",
+      "rating": "4.0",
+      "sizes": ["1 boîte"],
+      "category": "Produits laitiers"
+    },
+    {
+      "Id": "m32",
+      "title": "Petits pains briochés",
+      "image1": "/product-03-3.webp",
+      "image2": "/product-03-4.webp",
+      "price": "1 500",
+      "rating": "4.0",
+      "sizes": ["1 paquet"],
+      "category": "Boulangerie"
+    }
+  ]
+}

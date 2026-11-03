@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import titleicon from "@/public/freshbite-title-icon1.png";
 import productsData from "@/app/JsonData/TopSelling.json";
+import additionalProductsData from "@/app/JsonData/AdditionalProducts.json";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -18,6 +20,7 @@ type ProductType = {
   rating: string;
   sizes: string[];
   label?: string;
+  category?: string;
 };
 
 type ProductsPayload = {
@@ -26,6 +29,29 @@ type ProductsPayload = {
 };
 
 const { products, mainProducts } = productsData as ProductsPayload;
+const additionalProducts =
+  additionalProductsData.products as ProductType[];
+const hiddenHomepageCategories = new Set([
+  "Boulangerie",
+  "Légumineuses",
+  "Produits laitiers",
+]);
+const productsByCategory = [
+  ...new Set(
+    additionalProducts
+      .map((product) => product.category)
+      .filter(
+        (category): category is string =>
+          category !== undefined &&
+          !hiddenHomepageCategories.has(category),
+      ),
+  ),
+].map((category) => ({
+  category,
+  products: additionalProducts.filter(
+    (product) => product.category === category,
+  ),
+}));
 
 export default function TopSelling() {
   const [wishlist, setWishlist] = useState<string[]>([]);
@@ -495,6 +521,194 @@ export default function TopSelling() {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        <section className="mt-16" aria-labelledby="products-by-category">
+          <div className="mb-10 flex items-center gap-3">
+            <h2
+              id="products-by-category"
+              className="text-2xl font-bold lg:text-4xl"
+            >
+              Découvrez nos rayons
+            </h2>
+            <Image
+              src={titleicon}
+              alt=""
+              className="h-6 w-6 lg:h-8 lg:w-8"
+            />
+          </div>
+
+          {productsByCategory.map(({ category, products: categoryProducts }) => (
+            <section key={category} className="mb-12">
+              <div className="mb-5 flex items-center justify-between gap-4">
+                <h3 className="text-xl font-semibold text-gray-900 lg:text-2xl">
+                  {category}
+                </h3>
+                <Link
+                  href={`/UI-Components/Pages/Shop?category=${encodeURIComponent(category)}`}
+                  className="shrink-0 text-sm font-semibold text-prim-dark hover:underline"
+                >
+                  Voir la catégorie
+                </Link>
+              </div>
+
+              <Swiper
+                modules={[Autoplay]}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                loop={categoryProducts.length > 5}
+                rewind={categoryProducts.length > 1 && categoryProducts.length <= 5}
+                speed={1500}
+                spaceBetween={20}
+                breakpoints={{
+                  0: { slidesPerView: 1 },
+                  600: { slidesPerView: Math.min(2, categoryProducts.length) },
+                  768: {
+                    slidesPerView: Math.min(2.5, categoryProducts.length),
+                  },
+                  1100: { slidesPerView: Math.min(3, categoryProducts.length) },
+                  1400: { slidesPerView: Math.min(4, categoryProducts.length) },
+                  1600: { slidesPerView: Math.min(5, categoryProducts.length) },
+                }}
+                className="w-full product-swiper"
+              >
+                {categoryProducts.map((product) => {
+                  const quantity = quantities[product.Id] ?? 1;
+                  const totalPrice = parsePrice(product.price) * quantity;
+
+                  return (
+                    <SwiperSlide key={product.Id}>
+                      <article className="group relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-xl">
+                        <div className="relative h-72 overflow-hidden bg-gray-50 lg:h-60">
+                          <Image
+                            src={product.image1}
+                            alt={product.title}
+                            fill
+                            sizes="(max-width: 600px) 90vw, (max-width: 1100px) 45vw, 25vw"
+                            className="object-contain p-3 opacity-100 transition-opacity duration-500 group-hover:opacity-0"
+                          />
+                          <Image
+                            src={product.image2}
+                            alt=""
+                            fill
+                            sizes="(max-width: 600px) 90vw, (max-width: 1100px) 45vw, 25vw"
+                            className="object-contain p-3 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                          />
+                          <button
+                            type="button"
+                            onClick={() => toggleWishlist(product)}
+                            className="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 opacity-0 shadow-sm transition-all group-hover:opacity-100 group-focus-within:opacity-100 hover:text-prim"
+                            aria-label={
+                              wishlist.includes(product.Id)
+                                ? `Retirer ${product.title} des favoris`
+                                : `Ajouter ${product.title} aux favoris`
+                            }
+                          >
+                            <Icon
+                              icon={
+                                wishlist.includes(product.Id)
+                                  ? "mdi:heart"
+                                  : "line-md:heart"
+                              }
+                              width="20"
+                              height="20"
+                              className={
+                                wishlist.includes(product.Id)
+                                  ? "text-prim"
+                                  : "text-current"
+                              }
+                            />
+                          </button>
+                        </div>
+
+                        <div className="space-y-3 p-3">
+                          <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
+                            {category}
+                          </p>
+                          <h4 className="line-clamp-2 min-h-10 text-sm font-semibold text-black">
+                            {product.title}
+                          </h4>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <label className="sr-only" htmlFor={`size-${product.Id}`}>
+                              Format de {product.title}
+                            </label>
+                            <select
+                              id={`size-${product.Id}`}
+                              value={
+                                selectedSizes[product.Id] ?? product.sizes[0]
+                              }
+                              onChange={(event) =>
+                                setSelectedSizes((current) => ({
+                                  ...current,
+                                  [product.Id]: event.target.value,
+                                }))
+                              }
+                              className="max-w-32 rounded-md border border-gray-200 px-2 py-1.5 text-sm font-semibold text-black outline-none"
+                            >
+                              {product.sizes.map((size) => (
+                                <option key={size} value={size}>
+                                  {size}
+                                </option>
+                              ))}
+                            </select>
+
+                            <div className="flex items-center gap-2 rounded-md border border-gray-200 px-2 py-1.5">
+                              <button
+                                type="button"
+                                onClick={() => decrementQuantity(product.Id)}
+                                className="text-xl leading-none text-black hover:text-prim"
+                                aria-label={`Diminuer la quantité de ${product.title}`}
+                              >
+                                −
+                              </button>
+                              <span className="min-w-5 text-center text-sm font-semibold text-black">
+                                {quantity}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => incrementQuantity(product.Id)}
+                                className="text-xl leading-none text-black hover:text-prim"
+                                aria-label={`Augmenter la quantité de ${product.title}`}
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-between gap-2">
+                            <p className="text-base font-bold text-black">
+                              {formatFcfa(totalPrice)} FCFA
+                            </p>
+                            <span className="flex items-center gap-1 rounded-md bg-green-100 px-2 py-1 text-xs font-bold text-green-700">
+                              <Icon icon="mdi:star" width="14" height="14" />
+                              {product.rating}
+                            </span>
+                          </div>
+
+                          <button
+                            type="button"
+                            onClick={() => handleAddToCart(product)}
+                            className="flex w-full items-center justify-center gap-2 rounded-md bg-gray-100 px-4 py-3 text-sm font-bold uppercase tracking-wide text-black transition-colors hover:bg-black hover:text-white"
+                          >
+                            Ajouter au panier
+                            <Icon
+                              icon="lucide:shopping-bag"
+                              width="18"
+                              height="18"
+                            />
+                          </button>
+                        </div>
+                      </article>
+                    </SwiperSlide>
+                  );
+                })}
+              </Swiper>
+            </section>
+          ))}
+        </section>
       </div>
     </>
   );
